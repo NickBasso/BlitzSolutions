@@ -39,9 +39,9 @@ void main(){
 	printf("Index of char 'A' in ASCII is:  %d\n\n", 'A');
 	
 	i = 0;
-	gets(num);
+	gets(num); // get the number in a string form and put it in a char array
 		
-	scanf("%d %d", &base1, &base2);
+	scanf("%d %d", &base1, &base2);	// base1 - from what base to transfer |  base2 - to what base to transfer
 	printf("Input base1:  %d   |   Input base2:  %d\n", base1, base2);
 	printf("Input number string interpretation:   %s\n\n", num);
 	
