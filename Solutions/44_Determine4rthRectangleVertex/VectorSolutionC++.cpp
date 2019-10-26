@@ -15,22 +15,38 @@ public:
         vertex(double x_, double y_ ) : X(x_), Y( y_){}
         
         // vertex class constructor by default (X = 0, Y = 0)
-        vertex():X(0), Y(0){}
+        vertex() : X(0), Y(0){}
  
  		// defition of + and - operators when used between vertex class objects
-        vertex operator +( vertex v ){ return vertex( X + v.X, Y + v.Y ); }
-        vertex operator -( vertex v ){ return vertex( X - v.X, Y - v.Y ); }
+        vertex operator + (vertex v){
+			return vertex(X + v.X, Y + v.Y); 
+		}
+        vertex operator - (vertex v){
+			return vertex(X - v.X, Y - v.Y); 
+		}
         
         // returns dot product of two vertices (x multiplied by x and y multiplied by y)
-        double dot( vertex v ){ return X * v.X + Y * v.Y; }
+        double dot( vertex v ){
+			return X * v.X + Y * v.Y; 
+		}
         
         // returns distance from a vertex to (0.0) (sqrt((x1-x2)^2 + (y1-y2)^2) = (sqrt(x1^2-y1^2)) if x2 = 0 and y2 = 0
-        double length() { return sqrt(X * X + Y * Y ); }
+        double length(){
+			return sqrt(X * X + Y * Y ); 
+		}
 		
-		// 	
         vertex normalize( bool &bOk ){
-                double len = length(); bOk = false; // len equals distance from (0, 0) to (X, Y)
-                if( len > MY_EPSILON ){  bOk = true; return vertex( X/len, Y/len ); }
+        		// stores distance
+                double len = length();
+                
+				bOk = false; 
+				
+				// if length is more than minimal difference allowed
+                if( len > MY_EPSILON ){
+					bOk = true; 
+					return vertex( X/len, Y/len ); 
+				}
+				
                 return *this;
         }       
 };
@@ -46,8 +62,17 @@ std::ostream & operator << ( std::ostream & s, vertex v ){
 
 // checks wether second vertex (b in this function) is where the right angle is
 bool isRighAngle( vertex a, vertex b, vertex c){
-     bool bOkAB, bOkBC;
-     vertex uAB = ( b - a ).normalize( bOkAB ), uBC = ( c - b ).normalize( bOkBC );
+     // check wether length of AB and BC is bigger than minimal value
+     // which would mean those dots are considered to be in the same place
+	 bool bOkAB, bOkBC;
+ 	 
+	 // check wether for (b.x - a.x, b.y - a.y)
+	 // distance to (0, 0) is bigger than MY_EPSILON    
+     vertex uAB = ( b - a ).normalize( bOkAB );
+	 vertex uBC = ( c - b ).normalize( bOkBC );
+	 
+	 // returns true if both distances are > MY_EPSILON
+	 // and their dot product is less than MY_EPSILON
      return bOkAB && bOkBC && fabs(uAB.dot( uBC )) < MY_EPSILON;
 }
 
