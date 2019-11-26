@@ -27,7 +27,7 @@ bool check(vector < int > &seq, int pos, int taken, int k){
 	// intermediary output
 	for(int i = 0; i < temp.size(); i++)	
 		cout << seq[i] << " ";
-	cout << "  |  taken = " << taken;
+	cout << "  |  taken = " << taken << "  |  m = " << m << "  |  last_add[m] = " << last_add[m - 1];
 	cout << "\n";
 	
 	int balls = temp[pos] + taken;
@@ -95,7 +95,7 @@ int main(){
 		
 		if(check(seq, i, taken + 1, last_add[m - 1] - 1) == true){
 			not_found = true;
-			i = last_add[m] - 1;
+			i = last_add[m - 1] - 1;
 			taken = -1;
 			final = seq;
 			continue;
