@@ -1,4 +1,5 @@
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct Envelope{
 	int money;
@@ -12,7 +13,7 @@ int isEmpty(){
 
 void push(int val){
 	struct Envelope *temp;
-	temp = new Envelope();
+	temp = malloc(sizeof(Envelope()));
 	temp -> money = val;
 	temp -> previous = top;
 	top = temp;
