@@ -336,7 +336,7 @@ int main(){
 		else{
 			max_term = 0;
 			for(int j = 0; j < size; j++){
-				if(options[i][j] == '0'){
+				if(options[i][j] == '1'){
 					for(int k = 0; k < num_vars; k++){
 						if(final[k] == s[j]){
 							max_term += PowerOfX(2, k);

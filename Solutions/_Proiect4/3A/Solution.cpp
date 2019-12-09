@@ -301,43 +301,37 @@ int main(){
 	}
 	cout << "\n\n";
 	
-	// calculate CDNF
-	int minterms[10] = {0};
-	int min_term = 0;
-	int p = 0;
+	for(int i = 0; i < size + 9; i++)
+		cout << "-";
+	cout << "\n";
+	
+	for(int i = 0; i < num_vars; i++){
+		cout << "|" << final[i];
+	}
+	cout << "|  rez |\n";
+	
+	for(int i = 0; i < size + 9; i++)
+		cout << "-";
+	cout << "\n";
+	
+	int minterms[1000] = {0}, maxterms[1000] = {0};
+	int min_term = 0, max_term = 0;
+	int pmin = 0, pmax = 0;
 	for(int i = 0; i < num_options; i++){
 		//printf("%s", options[i]);
-		cout << options[i];
+		cout << "|" << options[i];
 		
 		char tmp[size+1];
 		tmp[size] = 0;
 		for(int j = 0; j < size; j++){
 			tmp[j] = options[i][j];
 		}
-		cout << " -> " << calculate(tmp);
-		
-		if(calculate(options[i]) == 1){
-			for(int j = 0; j < size; j++){
-				if(options[i][j] == '1'){
-					for(int k = 0; k < 10; k++){
-						if(final[k] == s[j]){
-							min_term += PowerOfX(2, k);
-							minterms[p++] = PowerOfX(2, k);
-						}
-					}
-				}
-			}
-			
-			cout << "  |  " << min_term;
-		}
-		cout << "\n";
+		int rez = calculate(tmp);
+		cout << "|   " << rez << "  |\n";
+		for(int i = 0; i < size + 9; i++)
+		cout << "-";
+	cout << "\n";
 	}
-	cout << "\n\n";
-	
-	for(int i = 0; i < p - 1; i++){
-		cout << "m" << minterms[i] << " + ";
-	}
-	cout << "m" << minterms[p - 1];
 	
 	return 0;
 }
