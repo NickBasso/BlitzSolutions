@@ -302,9 +302,9 @@ int main(){
 	cout << "\n\n";
 	
 	// calculate CDNF
-	int minterms[10] = {0};
-	int min_term = 0;
-	int p = 0;
+	int minterms[1000] = {0}, maxterms[1000] = {0};
+	int min_term = 0, max_term = 0;
+	int pmin = 0, pmax = 0;
 	for(int i = 0; i < num_options; i++){
 		//printf("%s", options[i]);
 		cout << options[i];
@@ -314,30 +314,56 @@ int main(){
 		for(int j = 0; j < size; j++){
 			tmp[j] = options[i][j];
 		}
-		cout << " -> " << calculate(tmp);
+		int rez = calculate(tmp);
+		cout << " -> " << rez;
 		
-		if(calculate(options[i]) == 1){
+		if(rez == 1){
+			min_term = 0;
 			for(int j = 0; j < size; j++){
 				if(options[i][j] == '1'){
-					for(int k = 0; k < 10; k++){
+					for(int k = 0; k < num_vars; k++){
 						if(final[k] == s[j]){
 							min_term += PowerOfX(2, k);
-							minterms[p++] = PowerOfX(2, k);
+							//minterms[pmin] = PowerOfX(2, k);
 						}
 					}
 				}
 			}
-			
-			cout << "  |  " << min_term;
+			minterms[pmin] = min_term;
+			pmin++;
+			cout << "  |  minterm: " << min_term;
+		}
+		else{
+			max_term = 0;
+			for(int j = 0; j < size; j++){
+				if(options[i][j] == '0'){
+					for(int k = 0; k < num_vars; k++){
+						if(final[k] == s[j]){
+							max_term += PowerOfX(2, k);
+							//maxterms[pmax] = PowerOfX(2, k);
+						}
+					}
+				}
+			}
+			maxterms[pmax] = max_term;
+			pmax++;
+			cout << "  |  maxterm: " << max_term;
 		}
 		cout << "\n";
 	}
 	cout << "\n\n";
 	
-	for(int i = 0; i < p - 1; i++){
+	cout << "CDNF: ";
+	for(int i = 0; i < pmin - 1; i++){
 		cout << "m" << minterms[i] << " + ";
+	}	
+	cout << "m" << minterms[pmin - 1] << "\n";
+	
+	cout << "CCNF: ";
+	for(int i = 0; i < pmax - 1; i++){
+		cout << "M" << maxterms[i] << " * ";
 	}
-	cout << "m" << minterms[p - 1];
+	cout << "M" << maxterms[pmax - 1];
 	
 	return 0;
 }
