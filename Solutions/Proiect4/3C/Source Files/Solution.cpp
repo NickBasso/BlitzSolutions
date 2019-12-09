@@ -366,4 +366,4 @@ int main(){
 	cout << "M" << maxterms[pmax - 1];
 	
 	return 0;
-}
+}////////////
