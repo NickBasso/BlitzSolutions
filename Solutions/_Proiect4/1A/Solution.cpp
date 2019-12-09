@@ -54,10 +54,11 @@ int main(){
 	
 	double min_dist = 10e9; // 1e9 = 10^9 
 	for(int i = 0; i < n; i++){
-		for(int j = 0; j < n; j++){
+		for(int j = i; j < n; j++){
 			if(i != j){
 				double dis = pts[i].calc_distance(&pts[j]);
-					cout << dis << "\n";
+				double dis2 = pts[j].calc_distance(&pts[i]);
+					cout << dis << " " << dis2 << "\n";
 				if(dis < min_dist)
 					min_dist = dis;
 			}
