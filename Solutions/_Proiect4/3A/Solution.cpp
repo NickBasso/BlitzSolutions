@@ -1,13 +1,5 @@
 #include <iostream>
 
-/*// !Warning! DON'T CHANGE THE ORDER!
-#include "..\Headers\Exceptions.h"					// Exceptions
-#include "..\Headers\PredefinedDesignations.h"		// Predefined Designations
-#include "..\Headers\MathConstants.h"				// Mathematical constants
-#include "..\Headers\CoreMath.h"					// Algebraic functions
-#include "..\Headers\Strings.h"						// Operations on strings
-#include "..\Headers\Logic.h"						// Main algorithm*/
-
 using namespace std;
 
 char vars[255] = {0};

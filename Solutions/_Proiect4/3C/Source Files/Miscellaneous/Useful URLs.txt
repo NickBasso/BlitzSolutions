@@ -1,2 +1,0 @@
-char array to int C  ->  function http://www.cplusplus.com/reference/cstdlib/atoi/
-char string to double  ->  http://www.cplusplus.com/reference/cstdlib/atof/
