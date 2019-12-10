@@ -4,7 +4,7 @@
 struct Envelope{
 	int money;
 	struct Envelope *previous;	
-}Instance;
+};
 struct Envelope *top;
 
 int isEmpty(){
@@ -13,7 +13,7 @@ int isEmpty(){
 
 void push(int val){
 	struct Envelope *temp;
-	temp = malloc(sizeof(Instance));
+	temp = malloc(sizeof(Envelope()));
 	temp -> money = val;
 	temp -> previous = top;
 	top = temp;
