@@ -86,7 +86,7 @@ struct Node* deleteNode(struct Node *node, int val){
 }
 
 int main(){
-	//freopen("input.txt", "r", stdin);
+	freopen("input.txt", "r", stdin);
 	
 	int val;
 

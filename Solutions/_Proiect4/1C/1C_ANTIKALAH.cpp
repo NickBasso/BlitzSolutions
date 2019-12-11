@@ -13,9 +13,23 @@ vector < int > final;
 
 bool check(vector < int > &seq, int pos, int taken, int k){
 	for(int i = 0; i < seq.size(); i++)	// intermediary output
-			cout << seq[i] << " ";
+		cout << seq[i] << " ";
 	cout << "  |  ";
 	
+	/*if(pos + 1 <= n - 1 && seq[pos + 1] > 0){
+		taken++;
+		seq[pos + 1]--;
+	}
+	else if(pos + 1 <= n - 1 && seq[pos + 1] <= 0){
+		return false;
+	}
+	else if(pos + 1 == n - 1 && seq[0] > 0){
+		taken++;
+		seq[0]--;
+	}
+	else{
+		return false;
+	}*/
 	taken++;
 	pos + 1 <= n - 1 ? seq[pos + 1]-- : seq[0]--;
 	
@@ -91,7 +105,7 @@ int main(){
 		
 		if(check(seq, i, taken + 1, last_add[m - 1] - 1) == true){
 			not_found = false;
-			i = last_add[m] - 1;
+			i = last_add[m - 1] - 1;
 			taken = -1;
 			continue;
 		}
@@ -102,3 +116,4 @@ int main(){
 	
 	return 0;
 }
+

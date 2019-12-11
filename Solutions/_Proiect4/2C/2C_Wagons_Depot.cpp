@@ -7,7 +7,7 @@ using std::cout;
 using std::vector;
 using std::set;
 
-int n = 6;
+int n;
 
 set < vector < int > > arrangements;
 
@@ -72,6 +72,10 @@ void find(vector < int > in, vector < int > depot, vector < int > out){
 }
 
 int main(){
+	freopen("input.txt", "r", stdin);
+	
+	cin >> n;
+	
 	vector < int > in(0);
 	vector < int > depot(0);
 	vector < int > out(0);
