@@ -12,32 +12,22 @@ int last_add[SIZE];
 vector < int > final;
 
 bool check(vector < int > &seq, int pos, int taken, int k){
-	for(int i = 0; i < seq.size(); i++)	// intermediary output
+	// intermediary output
+	for(int i = 0; i < seq.size(); i++)	
 		cout << seq[i] << " ";
 	cout << "  |  ";
 	
-	/*if(pos + 1 <= n - 1 && seq[pos + 1] > 0){
+	if(seq[pos] > 0){
 		taken++;
-		seq[pos + 1]--;
+		seq[pos]--;
 	}
-	else if(pos + 1 <= n - 1 && seq[pos + 1] <= 0){
-		return false;
-	}
-	else if(pos + 1 == n - 1 && seq[0] > 0){
-		taken++;
-		seq[0]--;
-	}
-	else{
-		return false;
-	}*/
-	taken++;
-	pos + 1 <= n - 1 ? seq[pos + 1]-- : seq[0]--;
 	
 	vector < int > temp = seq;
 	
-	for(int i = 0; i < temp.size(); i++)	// intermediary output
-			cout << seq[i] << " ";
-	cout << "  |  taken = " << taken;
+	// intermediary output
+	for(int i = 0; i < temp.size(); i++)	
+		cout << seq[i] << " ";
+	cout << "  |  taken = " << taken << "  |  m = " << m << "  |  last_add[m] = " << last_add[m - 1];
 	cout << "\n";
 	
 	int balls = temp[pos] + taken;
@@ -104,9 +94,10 @@ int main(){
 		not_found = true;
 		
 		if(check(seq, i, taken + 1, last_add[m - 1] - 1) == true){
-			not_found = false;
+			not_found = true;
 			i = last_add[m - 1] - 1;
 			taken = -1;
+			final = seq;
 			continue;
 		}
 		i = i - 1 >= 0 ? i - 1 : n - 1;
@@ -116,4 +107,3 @@ int main(){
 	
 	return 0;
 }
-
