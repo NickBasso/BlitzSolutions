@@ -70,9 +70,13 @@ void find(vector < int > in, vector < int > depot, vector < int > out){
 		find(t_in, t_depot, t_out);
 	}
 }
+// 1 2 5 14 42 132 429 1430 4862 16796
+/*
+	
 
+*/
 int main(){
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	
 	cin >> n;
 	
