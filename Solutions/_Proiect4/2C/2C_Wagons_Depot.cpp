@@ -41,7 +41,7 @@ int main()
 	d[0][0] = d[1][0] = '1';
 	
     for (int i = 0; i < 50000; i++) 
-        cout << "catalan " << i << " = " << wagons(i) << "\n\n"; 
+        cout << "wagons " << i << " = " << wagons(i) << "\n\n"; 
         
     cout << op;
     return 0; 
